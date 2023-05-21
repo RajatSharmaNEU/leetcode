@@ -1,8 +1,15 @@
 package practice;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HeapSort {
+
+    public static void test() {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.keySet().toArray();
+    }
 
     public static void sort(int[] a) {
         int N = a.length;
