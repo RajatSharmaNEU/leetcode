@@ -1,5 +1,6 @@
-package problems.arrays;
+package problems.binarySearch.arrays;
 
+// https://leetcode.com/problems/find-the-duplicate-number/
 public class findDuplicateNumber {
     public static int Solution(int[] nums) {
         // No need of map as we do need count of element

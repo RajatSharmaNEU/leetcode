@@ -1,7 +1,8 @@
-package problems.arrays;
+package problems.binarySearch.arrays;
 
 import java.util.*;
 
+// https://leetcode.com/problems/find-all-duplicates-in-an-array/
 public class findDuplicateElements {
     public static List<Integer> Solution(int[] nums) {
 //        boolean[] elementExist = new boolean[nums.length + 1];
