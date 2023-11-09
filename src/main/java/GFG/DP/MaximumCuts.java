@@ -1,6 +1,18 @@
 package GFG.DP;
 
 public class MaximumCuts {
+    private int maxCutsRecursive(int n, int a, int b, int c) {
+        if (n == 0) {
+            return 1;
+        }
+
+        if (n < 0) {
+            return 0;
+        }
+
+        return maxCutsRecursive(n - a, a, b, c) + maxCutsRecursive(n - b, a, b, c) + maxCutsRecursive(n - c, a, b, c);
+    }
+
     private int findMaxCutsUsingArray(int n, int a, int b, int c) {
         int[] dp = new int[n + 1];
         dp[0] = 0;
@@ -17,29 +29,12 @@ public class MaximumCuts {
         return dp[n];
     }
 
-    private int findMaxCutsUsingMatrix(int cuts[], int sum) {
-        int n = cuts.length;
-        int[][] dp = new int[n + 1][sum + 1];
-
-        for (int i = 0; i <= n; i++) {
-            dp[i][0] = 1;
-        }
-
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j <= sum; j++) {
-                dp[i][j] = dp[i - 1][j];
-                if (cuts[i - 1] <= j) {
-                    dp[i][j] = dp[i][j] + dp[i][j - cuts[i - 1]];
-                }
-            }
-        }
-
-        return dp[n][sum];
-    }
 
     public static void main(String[] args) {
         MaximumCuts maximumCuts = new MaximumCuts();
-        System.out.println(maximumCuts.findMaxCutsUsingMatrix(new int[]{1, 2, 3}, 5));
-        System.out.println(maximumCuts.findMaxCutsUsingArray(5, 1, 2, 3));
+//        System.out.println(maximumCuts.findMaxCutsUsingMatrix(new int[]{1, 2, 3}, 5));
+//        System.out.println(maximumCuts.findMaxCutsUsingArray(5, 1, 2, 3));
+        System.out.println(maximumCuts.maxCutsRecursive(17, 10, 11, 3));
+        System.out.println(maximumCuts.findMaxCutsUsingArray(17, 10, 11, 3));
     }
 }
