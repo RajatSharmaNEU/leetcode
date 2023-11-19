@@ -1,6 +1,7 @@
 package Graph.Problems.Search;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CaptureRegion {
     public static void markBorder(int r, int c, char[][] A) {
@@ -20,8 +21,6 @@ public class CaptureRegion {
     }
 
     public static void Solution(char[][] A) {
-        ArrayList<ArrayList<Character>> A1 = new ArrayList<ArrayList<Character>>();
-
         int rows = A.length;
         int cols = A[0].length;
 
@@ -35,6 +34,11 @@ public class CaptureRegion {
             markBorder(rows - 1, c, A);
         }
 
+        System.out.println(Arrays.toString(A[0]));
+        System.out.println(Arrays.toString(A[1]));
+        System.out.println(Arrays.toString(A[2]));
+        System.out.println(Arrays.toString(A[3]));
+
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
                 if(A[r][c] == 'O') {
@@ -44,6 +48,13 @@ public class CaptureRegion {
                 }
             }
         }
+
+        System.out.println("-----------");
+
+        System.out.println(Arrays.toString(A[0]));
+        System.out.println(Arrays.toString(A[1]));
+        System.out.println(Arrays.toString(A[2]));
+        System.out.println(Arrays.toString(A[3]));
     }
 
     public static void main(String[] args) {

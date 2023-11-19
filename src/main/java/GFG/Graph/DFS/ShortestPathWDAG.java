@@ -56,6 +56,7 @@ public class ShortestPathWDAG {
         // Distance Optimization
         while (!st.isEmpty()) {
             int u = st.pop();
+            System.out.println("S - " + u);
             for (Node node : adj.get(u)) {
                 if (dist[node.v] > dist[u] + node.wt)
                     dist[node.v] = dist[u] + node.wt;

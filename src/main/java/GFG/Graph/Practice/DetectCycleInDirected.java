@@ -15,6 +15,7 @@ public class DetectCycleInDirected {
 
         Queue<Integer> q = new LinkedList<>();
 
+        // Start from vertices who has zero inDegree
         for (int i = 0; i < inDegree.length; i++) {
             if(inDegree[i] == 0) {
                 q.add(i);
@@ -35,6 +36,7 @@ public class DetectCycleInDirected {
             count++;
         }
 
+        System.out.println("count - " + count);
         return count!=adj.size();
     }
 
@@ -67,7 +69,7 @@ public class DetectCycleInDirected {
     }
 
     public static void main(String[] args) {
-        int V = 5;
+        int V = 6;
 
         ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(V);
 
@@ -76,19 +78,23 @@ public class DetectCycleInDirected {
         }
 
 //        addDirectedEdge(adj, 0, 1);
+//        addDirectedEdge(adj, 1, 2);
 //        addDirectedEdge(adj, 2, 1);
-//        addDirectedEdge(adj, 2, 3);
-//        addDirectedEdge(adj, 3, 4);
-//        addDirectedEdge(adj, 4, 5);
-//        addDirectedEdge(adj, 5, 3);
 
         addDirectedEdge(adj, 0, 1);
-        addDirectedEdge(adj, 1, 2);
+        addDirectedEdge(adj, 2, 1);
         addDirectedEdge(adj, 2, 3);
-        addDirectedEdge(adj, 4, 1);
-//        addDirectedEdge(adj, 3, 1);
+        addDirectedEdge(adj, 3, 4);
+        addDirectedEdge(adj, 4, 5);
+        addDirectedEdge(adj, 5, 3);
+
+//        addDirectedEdge(adj, 0, 1);
+//        addDirectedEdge(adj, 1, 2);
+//        addDirectedEdge(adj, 2, 3);
+//        addDirectedEdge(adj, 4, 1);
+////        addDirectedEdge(adj, 3, 1);
 
         System.out.println(DFSSolution(adj, 0));
-        System.out.println(BFSSolution(adj, 0));
+//        System.out.println(BFSSolution(adj, 0));
     }
 }

@@ -37,6 +37,7 @@ public class DetectCycleInUndirected {
 
     public static boolean DFSRecursive(ArrayList<ArrayList<Integer>> adj, int v, boolean[] visited, int parent) {
         visited[v] = true;
+        System.out.println(v);
         for (int u : adj.get(v)) {
             if (visited[u] == false) {
                 return DFSRecursive(adj, u, visited, v);
@@ -70,7 +71,7 @@ public class DetectCycleInUndirected {
         addEdge(adj, 0, 1);
         addEdge(adj, 1, 2);
         addEdge(adj, 2, 3);
-//        addEdge(adj, 3, 1);
+        addEdge(adj, 3, 1);
         addEdge(adj, 3, 4);
         addEdge(adj, 4, 5);
 
