@@ -13,26 +13,23 @@ public class LongestChain {
                 return chain1[0] - chain2[0];
             }
         });
-        // 2. find lis (longest increasing sequence) based on second value
+        // 2. find dp (longest increasing sequence) based on second value
 
-        int[] lis = new int[chain.length];
+        int[] dp = new int[chain.length];
 
         for (int i = 0; i < chain.length; i++) {
-            lis[i] = 1;
+            dp[i] = 1;
             for (int j = 0; j < chain.length; j++) {
                 //LOGIC - Compare first part with second part of pair
                 if (chain[i][0] > chain[j][1]) {
-                    lis[i] = Math.max(lis[i], lis[j] + 1);
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
         }
 
-        int max = lis[0];
-        for (int i = 0; i < chain.length; i++) {
-            max = Math.max(max, lis[i]);
-        }
+        System.out.println(Arrays.toString(dp));
 
-        return max;
+        return dp[chain.length - 1];
     }
 
     public static void main(String[] args) {

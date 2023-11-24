@@ -1,26 +1,41 @@
 package GFG.DP;
 
 public class Practice {
-    private int findMaxCountCombination(int[] arr, int target, int index) {
-        if (target <= 0 || index >= arr.length) {
+    private int minJumpRecursive(int[] arr, int endIndex) {
+        if (endIndex == 0) {
             return 0;
         }
+        int min = Integer.MAX_VALUE;
 
-        int res = 0;
-        for (int i = index; i < arr.length; i++) {
-            if (target - arr[i] > 0) {
-                res = arr[index] + findMaxCountCombination(arr, target - arr[i], index + 1);
+        for (int i = 0; i < endIndex; i++) {
+            if (i + arr[i] >= endIndex) {
+                min = Math.min(min, 1 + minJumpRecursive(arr, i));
             }
         }
 
-        return res;
+        return min;
     }
 
+    private int minJumpDP(int[] arr, int endIndex) {
+        int[] dp = new int[arr.length + 1];
+
+        dp[0] = 0;
+
+        for (int i = 1; i < arr.length; i++) {
+            dp[i] = Integer.MAX_VALUE;
+            if(i + arr[i] >= endIndex) {
+                dp[i] = Math.min(dp[i], 1 + dp[i+arr[i] - endIndex]);
+            }
+        }
+
+        return dp[endIndex];
+    }
+
+
     public static void main(String[] args) {
-        int arr[] = new int[]{2, 5, 4, 3}; // {2,4,3}
-//        int arr[] = new int[]{12, 15, 14, 13}; // {2,4,3}
-        int target = 9;
         Practice practice = new Practice();
-        System.out.println(practice.findMaxCountCombination(arr, target, 0));
+        int[] arr = new int[]{3, 4, 2, 1, 2, 1};
+        System.out.println(practice.minJumpRecursive(arr, arr.length - 1));
+        System.out.println(practice.minJumpDP(arr, arr.length - 1));
     }
 }

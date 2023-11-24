@@ -5,6 +5,8 @@ public class LongestCommonSequence {
         if (m == 0 || n == 0)
             return 0;
 
+        // do not recalculate for same n and m
+        // Cache
         if (dp[m][n] != -1)
             return dp[m][n];
 

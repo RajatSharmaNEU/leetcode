@@ -1,5 +1,7 @@
 package GFG.DP.LIS;
 
+import java.util.Arrays;
+
 public class LongestIncreasingSubsequence {
     // Optimized
     int ceilIndex(int[] arr, int l, int r, int x) {
@@ -47,7 +49,7 @@ public class LongestIncreasingSubsequence {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
-//            System.out.println("lis[" + i + "] - " + lis[i]);
+            System.out.println(Arrays.toString(dp));
         }
 
         int result = 0;
@@ -64,6 +66,6 @@ public class LongestIncreasingSubsequence {
 
         LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
         System.out.println(lis.countLISNaive(arr));
-        System.out.println(lis.countLISBinary(arr));
+//        System.out.println(lis.countLISBinary(arr));
     }
 }
