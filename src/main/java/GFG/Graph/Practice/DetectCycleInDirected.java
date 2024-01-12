@@ -94,7 +94,7 @@ public class DetectCycleInDirected {
 //        addDirectedEdge(adj, 4, 1);
 ////        addDirectedEdge(adj, 3, 1);
 
-        System.out.println(DFSSolution(adj, 0));
-//        System.out.println(BFSSolution(adj, 0));
+//        System.out.println(DFSSolution(adj, 0));
+        System.out.println(BFSSolution(adj, 0));
     }
 }
