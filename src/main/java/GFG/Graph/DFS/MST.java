@@ -18,6 +18,7 @@ public class MST {
         int res = 0;
 
         for (int count = 0; count < V; count++) {
+            // Find next vertex with minimum shortest path
             int u = -1;
             for (int i = 0; i < V; i++) {
                 if (!mSet[i] && (u == -1 || key[i] < key[u])) {
