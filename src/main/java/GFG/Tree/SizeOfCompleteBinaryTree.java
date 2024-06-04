@@ -1,6 +1,6 @@
 package GFG.Tree;
 
-public class HeightOfCompleteBinaryTree {
+public class SizeOfCompleteBinaryTree {
     public int findHeight(Node root) {
         int lHeight = 0;
         int rHeight = 0;
@@ -37,7 +37,7 @@ public class HeightOfCompleteBinaryTree {
         node.right.left = new Node(6);
         node.right.right = new Node(7);
 
-        HeightOfCompleteBinaryTree heightOfCompleteBinaryTree = new HeightOfCompleteBinaryTree();
+        SizeOfCompleteBinaryTree heightOfCompleteBinaryTree = new SizeOfCompleteBinaryTree();
         System.out.println(heightOfCompleteBinaryTree.findHeight(node));
     }
 }

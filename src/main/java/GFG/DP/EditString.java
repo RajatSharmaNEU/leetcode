@@ -47,11 +47,11 @@ public class EditString {
     }
 
     public static void main(String[] args) {
-        String X = "CAT";
-        String Y = "CUT";
-
-//        String X = "SATURDAY";
-//        String Y = "SUNDAY";
+//        String X = "CAT";
+//        String Y = "CUT";
+//
+        String X = "SATURDAY";
+        String Y = "SUNDAY";
 
         EditString ed = new EditString();
         System.out.println(ed.editDistanceRecursive(X, Y, X.length(), Y.length()));

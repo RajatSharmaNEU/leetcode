@@ -1,58 +1,68 @@
 package GFG.DP;
 
+import java.util.Arrays;
+
 public class LongestCommonSequence {
-    private int LCSequenceMemoSolution(String X, String Y, int m, int n, int[][] dp) {
-        if (m == 0 || n == 0)
+    public static int LCS(String s1, String s2, int n, int m) {
+        if (n == 0 || m == 0) {
             return 0;
-
-        // do not recalculate for same n and m
-        // Cache
-        if (dp[m][n] != -1)
-            return dp[m][n];
-
-        if (X.charAt(m - 1) == Y.charAt(n - 1)) {
-            dp[m][n] = 1 + LCSequenceMemoSolution(X, Y, m - 1, n - 1, dp);
-        } else {
-            dp[m][n] = Math.max(LCSequenceMemoSolution(X, Y, m, n - 1, dp),
-                    LCSequenceMemoSolution(X, Y, m - 1, n, dp));
         }
-        return dp[m][n];
+
+        if (s1.charAt(n - 1) == s2.charAt(m - 1)) {
+            return 1 + LCS(s1, s2, n - 1, m - 1);
+        } else {
+            return Math.max(LCS(s1, s2, n - 1, m), LCS(s1, s2, n, m - 1));
+        }
     }
 
-
-    private int LCSequenceNaiveSolution(String s1, String s2, int l1, int l2) {
-        if (l1 == 0 || l2 == 0) {
+    public static int LCSMemo(String s1, String s2, int n, int m, int[][] dp) {
+        if (n == 0 || m == 0) {
             return 0;
         }
 
-        if (s1.charAt(l1 - 1) == s2.charAt(l2 - 1)) {
-            return 1 + LCSequenceNaiveSolution(s1, s2, l1 - 1, l2 - 1);
-        } else {
-            return Math.max(
-                    LCSequenceNaiveSolution(s1, s2, l1, l2 - 1),
-                    LCSequenceNaiveSolution(s1, s2, l1 - 1, l2)
-            );
+        if(dp[n][m] != Integer.MIN_VALUE) {
+            return dp[n][m];
         }
+
+        if (s1.charAt(n - 1) == s2.charAt(m - 1)) {
+            return 1 + LCSMemo(s1, s2, n - 1, m - 1, dp);
+        } else {
+            return Math.max(LCSMemo(s1, s2, n - 1, m, dp), LCSMemo(s1, s2, n, m - 1, dp));
+        }
+    }
+
+    public static int LCSMemoization(String s1, String s2, int n, int m) {
+        int[][] dp = new int[n + 1][m + 1];
+        for (int i = 0; i <= n; i++) {
+            Arrays.fill(dp[i], Integer.MIN_VALUE);
+        }
+
+        return LCSMemo(s1, s2, n, m, dp);
+    }
+
+    public static int LCSTabulation(String s1, String s2, int n, int m) {
+        int[][] dp = new int[n + 1][m + 1];
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    dp[i][j] = 1 + Math.max(Math.max(dp[i][j], dp[i - 1][j]), dp[i][j - 1]);
+                } else {
+                    dp[i][j] = Math.max(Math.max(dp[i][j], dp[i - 1][j]), dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[n][m];
     }
 
     public static void main(String[] args) {
-        LongestCommonSequence longestCommonSequence = new LongestCommonSequence();
-        String X = "ABCDGH";
-        String Y = "AEDFHR";
-
-        int result = longestCommonSequence.LCSequenceNaiveSolution(X, Y, X.length(), Y.length());
-        System.out.println("Using Naive - " + result);
-
-        int m = X.length();
-        int n = Y.length();
-        int[][] dp = new int[m + 1][n + 1];
-        for (int i = 0; i < m + 1; i++) {
-            for (int j = 0; j < n + 1; j++) {
-                dp[i][j] = -1;
-            }
-        }
-
-        System.out.println("Using Memo - "
-                + longestCommonSequence.LCSequenceMemoSolution(X, Y, m, n, dp));
+        String X = "ABCDGH"; // ADH
+        String Y = "AEDFHR"; // ADH
+//
+//        String X = "ABCDEFGH"; // ADH
+//        String Y = "AXBYCZE"; // ADH
+        System.out.println(LCS(X, Y, X.length(), Y.length()));
+        System.out.println(LCSTabulation(X, Y, X.length(), Y.length()));
+        System.out.println(LCSMemoization(X, Y, X.length(), Y.length()));
     }
 }

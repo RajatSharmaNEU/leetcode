@@ -2,15 +2,24 @@ package GFG.DP;
 
 public class MaximumCuts {
     private int maxCutsRecursive(int n, int a, int b, int c) {
-        if (n == 0) {
-            return 1;
+        if (n < 0) {
+            return -1;
         }
 
-        if (n < 0) {
+        if (n == 0) {
             return 0;
         }
 
-        return maxCutsRecursive(n - a, a, b, c) + maxCutsRecursive(n - b, a, b, c) + maxCutsRecursive(n - c, a, b, c);
+        int cutA = maxCutsRecursive(n - a, a, b, c);
+        int cutB = maxCutsRecursive(n - b, a, b, c);
+        int cutC = maxCutsRecursive(n - c, a, b, c);
+        int res = Math.max(Math.max(cutA, cutB), cutC);
+
+        if(res == -1) {
+            return -1;
+        }
+
+        return 1 + res;
     }
 
     private int findMaxCutsUsingArray(int n, int a, int b, int c) {
@@ -28,26 +37,6 @@ public class MaximumCuts {
 
         return dp[n];
     }
-
-//    private int maxCutsDP(int sum, int a, int b, int c) {
-//        int[] dp = new int[sum + 1];
-//        for (int i = 0; i <= sum; i++) { // i represent sum
-//            if(i >= a) {
-//                dp[i] = Math.max(dp[i], 1 + dp[i-a]);
-//            }
-//
-//            if(i >= b) {
-//                dp[i] = Math.max(dp[i], 1 + dp[i-b]);
-//            }
-//
-//            if(i >= c) {
-//                dp[i] = Math.max(dp[i], 1 + dp[i-c]);
-//            }
-//        }
-//
-//        return dp[sum];
-//    }
-
 
     public static void main(String[] args) {
         MaximumCuts maximumCuts = new MaximumCuts();
