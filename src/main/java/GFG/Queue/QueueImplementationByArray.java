@@ -10,11 +10,20 @@ public class QueueImplementationByArray {
         Queue<Integer> queue2 = new ArrayDeque();
 
         try {
-//            queue2.element();
-            queue2.remove();
-            queue2.add(1);
+
+            System.out.println(queue1.offer(0));
+            System.out.println(queue1.peek());
+            System.out.println(queue1.poll());
+            System.out.println(queue1.poll());
+
+            System.out.println("Below Methods can throw exceptions");
+
+            System.out.println(queue2.add(1));
+            System.out.println(queue2.element());
+            System.out.println(queue2.remove());
+            System.out.println(queue2.remove());
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error " + e);
         }
 
     }

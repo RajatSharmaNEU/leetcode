@@ -28,6 +28,8 @@ public class StockSpan {
             for (int j = i - 1; j >= 0; j--) {
                 if (arr[j] <= arr[i]) {
                     span++;
+                } else {
+                    break;
                 }
             }
             System.out.println(i + " - " + span);
