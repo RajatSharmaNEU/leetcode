@@ -2,11 +2,11 @@ package GFG.String;
 
 public class CheckSubsequence {
     private boolean isSubsequence(String s1, String s2) {
-        if (s1.length() == 0 && s2.length() == 0) {
-            return false;
+        if (s2.length() == 0) {
+            return true;
         }
 
-        if (s1.length() == 0 || s2.length() == 0) {
+        if (s1.length() == 0 && s2.length() != 0) {
             return false;
         }
 
@@ -19,7 +19,7 @@ public class CheckSubsequence {
 
     public static void main(String[] args) {
         String s1 = "ABCD";
-        String s2 = "AD";
+        String s2 = "EAD";
 
 //        String s1 = "ABCDE";
 //        String s2 = "AED";

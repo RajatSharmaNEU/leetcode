@@ -30,7 +30,9 @@ public class LexicographicRank {
         // O(n)
         for (int i = 0; i < string.length(); i++) {
             // num of characters smaller than current element * remaining place factorial
-            result = result + (count[string.charAt(i) - 1] * factorial(string.length() - i - 1));
+            int rank = string.charAt(i);
+            int remainingPositions = string.length() - 1 - i;
+            result = result + (count[rank - 1] * factorial(remainingPositions));
 
             // for next iteration we have to update position of characters
             // Character bigger and equal are now have order one less

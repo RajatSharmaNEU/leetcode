@@ -41,17 +41,23 @@ public class Anagram {
     }
 
     public static void main(String[] args) {
-//        String s1 = "listen";
-//        String s2 = "silent";
+        String s1 = "listen";
+        String s2 = "silent";
+//
+        String s3 = "aaacb";
+        String s4 = "cabaa";
 
-//        String s1 = "aaacb";
-//        String s2 = "cabaa";
-
-        String s1 = "aab";
-        String s2 = "bab";
+        String s5 = "aab";
+        String s6 = "bab";
 
         Anagram anagram = new Anagram();
         System.out.println(anagram.isAnagram(s1, s2));
         System.out.println(anagram.isAnagramBest(s1, s2));
+
+        System.out.println(anagram.isAnagram(s3, s4));
+        System.out.println(anagram.isAnagramBest(s3, s4));
+
+        System.out.println(anagram.isAnagram(s5, s6));
+        System.out.println(anagram.isAnagramBest(s5, s6));
     }
 }

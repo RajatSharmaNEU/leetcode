@@ -22,10 +22,8 @@ public class AnagramSearch {
     // O((n - m + 1) x (m))
     private boolean isAnagramStringPresentNaive(String text, String pat) {
         for (int i = 0; i < text.length() - pat.length(); i++) {
-            if (text.charAt(i) == pat.charAt(0)) {
-                if (isAnagram(text.substring(i, i + pat.length()), pat) == true) {
-                    return true;
-                }
+            if (isAnagram(text.substring(i, i + pat.length()), pat) == true) {
+                return true;
             }
         }
         return false;
@@ -33,7 +31,7 @@ public class AnagramSearch {
 
     private boolean areSame(int[] textChars, int[] patChars) {
         for (int j = 0; j < 256; j++) {
-            if(patChars[j] != textChars[j]) {
+            if (patChars[j] != textChars[j]) {
                 return false;
             }
         }
@@ -55,7 +53,7 @@ public class AnagramSearch {
         // O(n-m)
         for (int i = pat.length(); i <= text.length(); i++) {
             // O(256)
-            if(areSame(textChars, patChars)) {
+            if (areSame(textChars, patChars)) {
                 return true;
             }
             textChars[text.charAt(i)]++;
@@ -66,10 +64,10 @@ public class AnagramSearch {
     }
 
     public static void main(String[] args) {
-        String text = "geeksforgeeks";
+        String text = "geeksofgreeks";
         String pat = "frog";
         AnagramSearch anagramSearch = new AnagramSearch();
-//        System.out.println(anagramSearch.isAnagramStringPresentNaive(text, pat));
+        System.out.println(anagramSearch.isAnagramStringPresentNaive(text, pat));
         System.out.println(anagramSearch.isAnagramPresent(text, pat));
     }
 }
