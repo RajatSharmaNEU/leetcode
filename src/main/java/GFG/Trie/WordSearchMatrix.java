@@ -7,19 +7,19 @@ public class WordSearchMatrix {
     static int ALPHABET_SIZE = 26;
 
     static class TrieNode {
-        Practice.TrieNode[] children = new Practice.TrieNode[ALPHABET_SIZE];
+        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
         boolean isEndOfWord;
     }
 
-    static Practice.TrieNode root = new Practice.TrieNode();
+    static TrieNode root = new TrieNode();
 
     static void insert(String key) {
-        Practice.TrieNode pCrawl = root;
+        TrieNode pCrawl = root;
 
         for (int i = 0; i < key.length(); i++) {
             int index = key.charAt(i) - 'a';
             if (pCrawl.children[index] == null) {
-                pCrawl.children[index] = new Practice.TrieNode();
+                pCrawl.children[index] = new TrieNode();
             }
             pCrawl = pCrawl.children[index];
         }
@@ -28,7 +28,7 @@ public class WordSearchMatrix {
     }
 
     static boolean search(String key) {
-        Practice.TrieNode pCrawl = root;
+        TrieNode pCrawl = root;
 
         for (int i = 0; i < key.length(); i++) {
             int index = key.charAt(i) - 'a';
@@ -43,7 +43,7 @@ public class WordSearchMatrix {
         return pCrawl.isEndOfWord;
     }
 
-    static boolean isEmpty(Practice.TrieNode root) {
+    static boolean isEmpty(TrieNode root) {
         for (int i = 0; i < ALPHABET_SIZE; i++)
             if (root.children[i] != null)
                 return false;
@@ -51,7 +51,7 @@ public class WordSearchMatrix {
     }
 
     // Recursive function to delete a key from given Trie
-    static private Practice.TrieNode remove(Practice.TrieNode root, String key, int depth) {
+    static private TrieNode remove(TrieNode root, String key, int depth) {
         // If tree is empty
         if (root == null)
             return null;
@@ -107,7 +107,7 @@ public class WordSearchMatrix {
         return result;
     }
 
-    static void dfs(int r, int c, Practice.TrieNode node, String word, List<String> result, boolean[][] visit, char[][] board, Practice.TrieNode root) {
+    static void dfs(int r, int c, TrieNode node, String word, List<String> result, boolean[][] visit, char[][] board, TrieNode root) {
         if(r < 0 || c < 0 || r == board.length || c == board[0].length || visit[r][c] || node.children[board[r][c] - 'a'] == null) {
             return;
         }
