@@ -1,8 +1,5 @@
 package Graph.Practice.Nov;
 
-import GFG.Graph.DFS.ShortestPathWDAG;
-import GFG.Stack.MaxRectangle;
-
 import java.util.*;
 
 public class BFSDFS {

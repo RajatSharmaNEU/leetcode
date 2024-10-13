@@ -1,4 +1,4 @@
-package GFG.Graph.DFS;
+package GFG.Graph;
 
 import java.util.ArrayList;
 

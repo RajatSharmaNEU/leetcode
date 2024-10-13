@@ -1,11 +1,12 @@
-package GFG.Graph.BFS;
+package GFG.Graph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFSDisconnected {
-    static void BFSSolution(ArrayList<ArrayList<Integer>> adj, int V, int S, boolean[] visited) {
+public class BFS {
+    static void BFSSolution(ArrayList<ArrayList<Integer>> adj, int V, int S) {
+        boolean visited[] = new boolean[V];
         Queue<Integer> q = new LinkedList<>();
 
         visited[S] = true;
@@ -24,26 +25,23 @@ public class BFSDisconnected {
         }
     }
 
-    static void BFSDis(ArrayList<ArrayList<Integer>> adj, int V) {
-        int count = 0;
-        boolean visited[] = new boolean[V];
-        for (int i = 0; i < V; i++) {
-            if (visited[i] == false) {
-                System.out.println("--");
-                BFSSolution(adj, V, i, visited);
-                count++;
-            }
-        }
-        System.out.println("Connected Components Count - " + count);
-    }
-
     static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v) {
         adj.get(u).add(v);
         adj.get(v).add(u);
     }
 
+    static void printGraph(ArrayList<ArrayList<Integer>> adj) {
+        for (int i = 0; i < adj.size(); i++) {
+            System.out.print(i + "->");
+            for (int j = 0; j < adj.get(i).size(); j++) {
+                System.out.print(adj.get(i).get(j) + " ");
+            }
+            System.out.println("");
+        }
+    }
+
     public static void main(String[] args) {
-        int V = 9;
+        int V = 5;
 
         ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(V);
 
@@ -54,15 +52,12 @@ public class BFSDisconnected {
         addEdge(adj, 0, 1);
         addEdge(adj, 0, 2);
         addEdge(adj, 1, 2);
-
-        addEdge(adj, 3, 4);
-
-        addEdge(adj, 5, 6);
-        addEdge(adj, 5, 7);
-        addEdge(adj, 7, 8);
+        addEdge(adj, 1, 3);
+        addEdge(adj, 2, 3);
+        addEdge(adj, 2, 4);
 
 //        printGraph(adj);
 
-        BFSDis(adj, V);
+        BFSSolution(adj, 5, 0);
     }
 }

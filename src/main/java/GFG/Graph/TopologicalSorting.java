@@ -1,4 +1,4 @@
-package GFG.Graph.DFS;
+package GFG.Graph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -105,8 +105,8 @@ public class TopologicalSorting {
 
 //        printGraph(adj);
 
-//        BFSSolution(adj, V, 0);
-        System.out.println("");
-        DFS(adj, V);
+        BFSSolution(adj, V, 0);
+//        System.out.println("");
+//        DFS(adj, V);
     }
 }
