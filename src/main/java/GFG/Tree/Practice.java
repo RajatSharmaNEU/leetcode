@@ -1,31 +1,25 @@
 package GFG.Tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-
 public class Practice {
-    public Node LCA(Node root, int n1, int n2) {
-        if(root == null) {
-            return null;
-        }
+    public static Node findLCA(Node root, int n1, int n2) {
+       if(root == null) return null;
 
-        if(root.key == n1 || root.key == n2) {
-            return root;
-        }
+       if(root.key == n1 || root.key == n2) {
+           return root;
+       }
 
-        Node leftLCA = LCA(root.left, n1, n2);
-        Node rightLCA = LCA(root.right, n1, n2);
+       Node leftLCA = findLCA(root.left, n1, n2);
+       Node rightLCA = findLCA(root.right, n1, n2);
 
-        if(leftLCA!=null && rightLCA!=null) {
-            return root;
-        }
+       if(leftLCA != null && rightLCA != null) {
+           return root;
+       }
 
-        if(leftLCA != null) {
-            return leftLCA;
-        } else {
-            return rightLCA;
-        }
+       if(leftLCA != null) {
+           return leftLCA;
+       } else {
+           return rightLCA;
+       }
     }
 
     public static void main(String[] args) {
@@ -41,8 +35,6 @@ public class Practice {
         node.left.right.right = new Node(80);
         node.left.right.left.left = new Node(30);
 
-        Practice lca = new Practice();
-        System.out.println(lca.LCA(node, 30, 80).key);
-
+        System.out.println(findLCA(node, 30, 80).key);
     }
 }
