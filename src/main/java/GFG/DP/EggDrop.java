@@ -38,11 +38,11 @@ public class EggDrop {
         // let x is the trail k
         for (int x = 1; x <= k; x++) {
             // max of break, not-break
-            int currTrail = Math.max(minTrials(x-1, eggs-1), minTrials(k-x, eggs));
+            int currTrail = 1 + Math.max(minTrials(x-1, eggs-1), minTrials(k-x, eggs));
             minTrail = Math.min(minTrail, currTrail);
         }
 
-        return 1 + minTrail;
+        return minTrail;
     }
 
     public static void main(String[] args) {

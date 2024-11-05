@@ -21,17 +21,17 @@ public class LongestIncreasingSubsequence {
     // here we try to maintain order of sequence
     // the sequence is not the right but length would be
     private int countLISBinary(int[] arr) {
-        int lis[] = new int[arr.length];
+        int dp[] = new int[arr.length];
         int len = 1;
 
-        lis[0] = arr[0];
+        dp[0] = arr[0];
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > lis[len - 1]) {
-                lis[len] = arr[i];
+            if (arr[i] > dp[len - 1]) {
+                dp[len] = arr[i];
                 len++;
             } else {
-                int ceil = ceilIndex(lis, 0, len - 1, arr[i]);
-                lis[ceil] = arr[i];
+                int ceil = ceilIndex(dp, 0, len - 1, arr[i]);
+                dp[ceil] = arr[i];
             }
         }
 

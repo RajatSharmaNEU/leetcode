@@ -23,7 +23,7 @@ public class BuildingBridge {
 
         for (int i = 0; i < cityPairs.length; i++) {
             lis[i] = 1;
-            for (int j = 0; j < cityPairs.length; j++) {
+            for (int j = 0; j < i; j++) {
                 if (cityPairs[i][1] > cityPairs[j][1]) {
                     lis[i] = Math.max(lis[i], lis[j] + 1);
                 }

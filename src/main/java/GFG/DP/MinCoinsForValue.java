@@ -29,15 +29,33 @@ public class MinCoinsForValue {
         for (int i = 1; i <= sum; i++) {
             for (int j = 0; j < coins.length; j++) {
                 if(coins[j] <= i) {
-                    // Optimized
-                    int subResult = 1 + dp[i - coins[j]];
-                    if(subResult != Integer.MAX_VALUE) {
-                        dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
-                    }
+//                    // Optimized
+//                    int subResult = 1 + dp[i - coins[j]];
+//                    if(subResult != Integer.MAX_VALUE) {
+//                        dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
+//                    }
 
                     // non-optimized
-                    //dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
+                    dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
                 }
+            }
+        }
+
+        return dp[sum];
+    }
+
+    private int minCoinsDPBest(int sum, int[] coins) {
+        int[] dp = new int[sum + 1];
+
+        for (int i = 0; i <= sum; i++) {
+            dp[i] = sum + 1; //
+        }
+
+        dp[0] = 0;
+
+        for (int i = 0; i < coins.length; i++) {
+            for (int j = coins[i]; j <= sum; j++) {
+                dp[j] = Math.min(dp[j], 1 + dp[j - coins[i]]);
             }
         }
 
@@ -48,5 +66,6 @@ public class MinCoinsForValue {
         MinCoinsForValue minCoinsForValue = new MinCoinsForValue();
         System.out.println(minCoinsForValue.minCoinsRecursive(30, new int[]{25, 10, 5}));
         System.out.println(minCoinsForValue.minCoinsDP(30, new int[]{25, 10, 5}));
+        System.out.println(minCoinsForValue.minCoinsDPBest(30, new int[]{25, 10, 5}));
     }
 }
