@@ -2,6 +2,7 @@ package GFG.Graph.NeetCode;
 
 import java.util.Arrays;
 
+//https://leetcode.com/problems/redundant-connection/
 public class RedundantConnection {
     int[] parent;
 
