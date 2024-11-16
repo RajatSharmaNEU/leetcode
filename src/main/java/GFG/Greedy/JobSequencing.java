@@ -13,6 +13,11 @@ public class JobSequencing {
             this.deadline = d;
             this.profit = p;
         }
+
+        @Override
+        public String toString() {
+            return this.deadline + " - " + this.profit;
+        }
     }
 
     private int maxProfit(Job[] jobs) {
@@ -23,6 +28,8 @@ public class JobSequencing {
                 return o2.profit - o1.profit;
             }
         });
+
+        System.out.println(Arrays.toString(jobs));
 
         boolean[] jobsPicked = new boolean[jobs.length];
         int result = 0;

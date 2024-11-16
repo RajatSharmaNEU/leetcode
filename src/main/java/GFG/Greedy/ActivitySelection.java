@@ -14,18 +14,20 @@ public class ActivitySelection {
         }
     }
 
-    private int getMaximumActivitySelection(Activity[] input) {
-        Arrays.sort(input, new Comparator<Activity>() {
+    private int getMaximumActivitySelection(Activity[] inputs) {
+        Arrays.sort(inputs, new Comparator<Activity>() {
             @Override
             public int compare(Activity o1, Activity o2) {
                 return o1.finish - o2.finish;
             }
         });
 
+//        Arrays.sort(inputs, ((o1, o2) -> o1.finish - o2.finish));
+
         int count = 1; // consider first value as initial Activity
         int prevIndex = 0;
-        for (int i = 1; i < input.length; i++) {
-            if(input[i].start >= input[prevIndex].finish) {
+        for (int i = 1; i < inputs.length; i++) {
+            if(inputs[i].start >= inputs[prevIndex].finish) {
                 count++;
                 prevIndex = i;
             }

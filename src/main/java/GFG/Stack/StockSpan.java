@@ -39,7 +39,7 @@ public class StockSpan {
     public static void main(String[] args) {
         int[] arr = new int[]{60, 10, 20, 15, 35, 50};
         StockSpan stockSpan = new StockSpan();
-        stockSpan.printSpan(arr);
+//        stockSpan.printSpan(arr);
         stockSpan.printSpanUsingStack(arr);
     }
 }

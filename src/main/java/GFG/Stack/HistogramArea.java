@@ -89,11 +89,11 @@ public class HistogramArea {
     public static void main(String[] args) {
         int[] arr = new int[]{6, 2, 5, 4, 1, 5, 6};
         HistogramArea histogramArea = new HistogramArea();
-        System.out.println(histogramArea.getMaxArea(arr));
+//        System.out.println(histogramArea.getMaxArea(arr));
 //        histogramArea.previousSmallestElements(arr);
 //        System.out.println("");
 //        histogramArea.nextSmallestElements(arr);
         System.out.println(histogramArea.getMaxAreaEfficient(arr));
-        System.out.println(histogramArea.getMaxAreaBest(arr));
+//        System.out.println(histogramArea.getMaxAreaBest(arr));
     }
 }
