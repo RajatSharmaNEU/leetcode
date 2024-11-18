@@ -1,6 +1,8 @@
 package GFG.Stack;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class StackImplementation {
@@ -55,6 +57,7 @@ public class StackImplementation {
         }
 
         boolean isEmpty() {
+            list.stream().min( (p1, p2) -> p1 - p2);
             return list.isEmpty();
         }
     }
