@@ -1,5 +1,7 @@
 package GFG.Hashing;
 
+import java.util.Arrays;
+
 public class CommonSumSubBinaryArray {
     public static int longestCommonSumSubArrayNaive(int[] arr1, int[] arr2) {
         int n = arr1.length;
@@ -29,6 +31,8 @@ public class CommonSumSubBinaryArray {
         for (int i = 0; i < n; i++) {
             temp[i] = arr1[i] - arr2[i];
         }
+
+        System.out.println(Arrays.toString(temp));
 
         return LongestSumSubArray.findLongestSumSubArray(temp, 0);
     }

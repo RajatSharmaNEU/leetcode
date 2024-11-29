@@ -1,9 +1,6 @@
 package GFG.Graph.NeetCode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 // https://leetcode.com/problems/course-schedule-ii/
 public class CourseSchedule2 {
@@ -53,7 +50,7 @@ public class CourseSchedule2 {
         int[][] prerequisites2 = new int[][]{{1, 0}};
 
         CourseSchedule2 courseSchedule = new CourseSchedule2();
-        System.out.println();
-        System.out.println(courseSchedule.findOrder(2, prerequisites2));
+        System.out.println(Arrays.toString(courseSchedule.findOrder(2, prerequisites1)));
+        System.out.println(Arrays.toString(courseSchedule.findOrder(2, prerequisites2)));
     }
 }

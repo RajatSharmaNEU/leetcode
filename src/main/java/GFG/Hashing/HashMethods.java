@@ -1,6 +1,7 @@
 package GFG.Hashing;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class HashMethods {
     public static void hashSetMethods() {
@@ -30,7 +31,7 @@ public class HashMethods {
         System.out.println(set.contains("Hello"));
         System.out.println(set.contains("World"));
 
-        HashSet<String> setFromArray = new HashSet(Arrays.asList("Hash", "Set", "From", "Array"));
+        HashSet<String> setFromArray = new HashSet(Arrays.asList("Hash", "Set", "From", "Array", "Set", "From", "Array"));
         System.out.println(setFromArray);
     }
 
@@ -55,10 +56,18 @@ public class HashMethods {
         for (Map.Entry <String, Integer> entry : map.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
+
+        for (String entry : map.keySet()) {
+            System.out.println(entry);
+        }
+
+        for (Integer entry : map.values()) {
+            System.out.println(entry);
+        }
     }
 
     public static void main(String[] args) {
-        hashSetMethods();
+//        hashSetMethods();
         hashMapMethods();
     }
 }

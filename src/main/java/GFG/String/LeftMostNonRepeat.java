@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class LeftMostNonRepeat {
 
     private int findIndex(String string) {
-        boolean[] count = new boolean[256];
+        boolean[] visited = new boolean[256];
         int result = Integer.MAX_VALUE;
 
         for (int i = string.length()-1; i >= 0 ; i--) {
-            if(count[string.charAt(i)] == false) {
-                count[string.charAt(i)] = true;
+            if(visited[string.charAt(i)] == false) {
+                visited[string.charAt(i)] = true;
                 result = Math.min(result, i);
             }
         }
@@ -36,7 +36,7 @@ public class LeftMostNonRepeat {
     }
 
     public static void main(String[] args) {
-        String string = "forgeeksforgeeks";
+        String string = "forgeeksforgeek";
         LeftMostNonRepeat leftMostNonRepeat = new LeftMostNonRepeat();
         System.out.println(leftMostNonRepeat.findIndex(string));
         System.out.println(leftMostNonRepeat.leftNonRepeat(string));

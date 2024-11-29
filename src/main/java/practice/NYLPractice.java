@@ -66,5 +66,6 @@ public class NYLPractice {
         System.out.println(generateColumnName(26));
         System.out.println(generateColumnName(27));
         System.out.println(generateColumnName(28));
+        System.out.println(generateColumnName(998));
     }
 }

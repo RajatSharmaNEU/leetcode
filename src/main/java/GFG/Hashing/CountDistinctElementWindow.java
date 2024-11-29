@@ -33,7 +33,7 @@ public class CountDistinctElementWindow {
                 map.remove(arr[i-1]);
             }
 
-            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+            map.put(arr[i+k-1], map.getOrDefault(arr[i], 0) + 1);
             result = Math.max(result, map.size());
         }
 
@@ -45,8 +45,12 @@ public class CountDistinctElementWindow {
         int[] arr2 = new int[]{10, 10, 10, 10};
         int[] arr3 = new int[]{10, 20, 30, 40};
 
-        System.out.println(findNaive(arr1, 4));
-        System.out.println(findNaive(arr2, 3));
-        System.out.println(findNaive(arr3, 3));
+//        System.out.println(findNaive(arr1, 4));
+//        System.out.println(findNaive(arr2, 3));
+//        System.out.println(findNaive(arr3, 3));
+
+        System.out.println(find(arr1, 4));
+        System.out.println(find(arr2, 3));
+        System.out.println(find(arr3, 3));
     }
 }

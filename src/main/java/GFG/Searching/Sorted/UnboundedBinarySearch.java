@@ -36,6 +36,6 @@ public class UnboundedBinarySearch {
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 10, 15, 20, 40, 60, 80, 100, 200, 500, 1000};
-        System.out.println(search(arr, 100));
+        System.out.println(search(arr, 20));
     }
 }
