@@ -17,8 +17,8 @@ public class RepeatingElement {
 
     // Space - O(1) & Time - O(n)
     public static int findEfficient(int[] arr) {
-        int slow = arr[0] + 1;
-        int fast = arr[0] + 1;
+        int slow = arr[0];
+        int fast = arr[0];
 
         do {
             slow = arr[slow] + 1;

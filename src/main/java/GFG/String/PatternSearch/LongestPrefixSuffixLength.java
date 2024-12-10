@@ -1,4 +1,4 @@
-package GFG.String.GFG.PatternSearch;
+package GFG.String.PatternSearch;
 
 import java.util.Arrays;
 

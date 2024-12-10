@@ -12,13 +12,21 @@ public class BinarySearchRotatedArray {
             }
 
             if (arr[low] < arr[mid]) { // left part is sorted
-                if (k >= arr[low] && k < arr[mid]) {
+                if(k == arr[low]){
+                    return low;
+                }
+
+                if (k > arr[low] && k < arr[mid]) {
                     high = mid - 1;
                 } else {
                     low = mid + 1;
                 }
             } else { // right part is sorted
-                if(k > arr[mid] && k <= arr[high]) {
+                if(k == arr[high]) {
+                    return high;
+                }
+
+                if(k > arr[mid] && k < arr[high]) {
                     low = mid + 1;
                 } else {
                     high = mid - 1;

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class FindTripletSum {
     public static boolean findSumPair(int[] arr, int start, int sum) {
-        int low = start, high = arr.length - 1;
+        int low = start+1, high = arr.length - 1;
 
         while (low < high) {
             int currSum = arr[low] + arr[high];

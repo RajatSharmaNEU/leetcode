@@ -1,4 +1,4 @@
-package GFG.String.GFG.PatternSearch;
+package GFG.String.PatternSearch;
 
 // JAVA program for implementation of KMP pattern
 // searching algorithm

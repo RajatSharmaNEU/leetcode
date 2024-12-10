@@ -52,6 +52,6 @@ public class heapSort {
         // do heap sort ~ n*log(n);
 
         doHeapSort(arr);
-        System.out.println(Arrays.toString(arr));
+        System.out.println("Sol" + Arrays.toString(arr));
     }
 }
