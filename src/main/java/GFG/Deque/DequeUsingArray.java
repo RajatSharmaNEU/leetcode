@@ -1,4 +1,4 @@
-package GFG;
+package GFG.Deque;
 
 // Deque using Array with Time Complexity O(1)
 // Use circular implementation on array

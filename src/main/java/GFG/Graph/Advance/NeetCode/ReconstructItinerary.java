@@ -1,4 +1,4 @@
-package GFG.Graph.NeetCode;
+package GFG.Graph.Advance.NeetCode;
 
 import java.util.*;
 

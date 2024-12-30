@@ -35,10 +35,32 @@ public class MaxSlidingWindow {
         return output;
     }
 
+    public static void findMaxValueInWindow(int[] arr, int k) {
+        Deque<Integer> deque = new ArrayDeque<>(); // Holds index of element
+        int l = 0;
+
+        for (int r = 0; r < arr.length; r++) {
+            while (!deque.isEmpty() && arr[deque.getLast()] < arr[r]) {
+                deque.removeLast();
+            }
+            deque.addLast(r);
+
+            while (deque.getFirst() < l) {
+                deque.removeFirst();
+            }
+
+            if(r >= k -1) {
+                System.out.print(arr[deque.getFirst()]);
+                l++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[]{1,3,-1,-3,5,3,6,7};
         int k = 3;
 
         System.out.println(Arrays.toString(findMax(arr, k)));
+        findMaxValueInWindow(arr, k);
     }
 }

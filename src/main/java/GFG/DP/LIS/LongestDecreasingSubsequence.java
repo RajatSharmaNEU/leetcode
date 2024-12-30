@@ -2,7 +2,7 @@ package GFG.DP.LIS;
 
 import java.util.Arrays;
 
-public class LongestIncreasingSubsequence {
+public class LongestDecreasingSubsequence {
     // Optimized
     int ceilIndex(int[] arr, int l, int r, int x) {
         while (r > l) {
@@ -45,7 +45,7 @@ public class LongestIncreasingSubsequence {
         for (int i = 0; i < arr.length; i++) {
             dp[i] = 1;
             for (int j = 0; j < i; j++) {
-                if (arr[i] > arr[j]) {
+                if (arr[i] < arr[j]) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
@@ -58,10 +58,10 @@ public class LongestIncreasingSubsequence {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{3, 4, 2, 8, 10};
+        int[] arr = new int[]{10, 8, 2, 4, 3};
 
 
-        LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
+        LongestDecreasingSubsequence lis = new LongestDecreasingSubsequence();
         System.out.println(lis.countLISNaive(arr));
 //        System.out.println(lis.countLISBinary(arr));
     }

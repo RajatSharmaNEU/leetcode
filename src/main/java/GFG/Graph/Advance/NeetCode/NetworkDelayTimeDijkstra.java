@@ -1,4 +1,4 @@
-package GFG.Graph.NeetCode;
+package GFG.Graph.Advance.NeetCode;
 
 import java.util.*;
 
@@ -29,7 +29,7 @@ public class NetworkDelayTimeDijkstra {
 
         // BFS Traversal
         // Process while the heap is not empty and we haven't visited all nodes
-        while (!minHeap.isEmpty()) { // && visited.size() < n -- optimization
+        while (!minHeap.isEmpty() && visited.size() < n) { //
             int[] current = minHeap.poll();
             int currTime = current[0], node = current[1];
 

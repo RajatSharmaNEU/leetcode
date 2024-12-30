@@ -1,4 +1,4 @@
-package GFG;
+package GFG.Deque;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -28,29 +28,29 @@ public class FindCircularTour {
         return -1;
     }
 
-//    // Best
-//    public static int dequeFindCircularTour(int[] petrol, int[] dist) {
-//        // curr petrol >= 0 ? Add petrol pump in last : remove petrol pump from front
-//        Deque<Integer> deque = new ArrayDeque<>();
-//        int curr_petrol = 0, n = petrol.length;
-//
-//        for (int i = 0; i < n; i++) {
-//            int start = i;
-//
-//            deque.addLast(start);
-//            curr_petrol = curr_petrol + (petrol[start] - dist[start]);
-//            while (curr_petrol >= 0) {
-//                start++;
-//            }
-//
-//            while (curr_petrol < 0) {
-//                int head = deque.removeFirst();
-//                curr_petrol = curr_petrol - (petrol[head] - dist[head]);
-//            }
-//        }
-//
-//        return deque.pollFirst();
-//    }
+    // Best
+    public static int dequeFindCircularTour(int[] petrol, int[] dist) {
+        // curr petrol >= 0 ? Add petrol pump in last : remove petrol pump from front
+        Deque<Integer> deque = new ArrayDeque<>();
+        int curr_petrol = 0, n = petrol.length;
+
+        for (int i = 0; i < n; i++) {
+            int start = i;
+
+            deque.addLast(start);
+            curr_petrol = curr_petrol + (petrol[start] - dist[start]);
+            while (curr_petrol >= 0) {
+                start++;
+            }
+
+            while (curr_petrol < 0) {
+                int head = deque.removeFirst();
+                curr_petrol = curr_petrol - (petrol[head] - dist[head]);
+            }
+        }
+
+        return deque.pollFirst();
+    }
 
     public static int findStartingPump(int[] pumps, int[] distance) {
         int totalDeficit = 0; // Track overall deficit when tour is not possible
@@ -95,8 +95,8 @@ public class FindCircularTour {
 //        System.out.println(naive(petrol, dist));
 //        System.out.println(dequeFindCircularTour(petrol3, dist3)); -- Incomplete implementation
         System.out.println(findStartingPump(petrol3, dist3));
-//        System.out.println(naive(petrol1, dist1));
-//        System.out.println(naive(petrol2, dist2));
+        System.out.println(findStartingPump(petrol2, dist2));
+        System.out.println(findStartingPump(petrol1, dist1));
 
     }
 }

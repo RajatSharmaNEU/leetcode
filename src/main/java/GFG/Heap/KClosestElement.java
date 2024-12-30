@@ -1,6 +1,7 @@
 package GFG.Heap;
 
 import java.util.Comparator;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 public class KClosestElement {
@@ -41,9 +42,22 @@ public class KClosestElement {
         }
     }
 
+    public static void findKCloset(int[]arr, int ref, int k){
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+
+        for (int i = 0; i < arr.length; i++) {
+            pq.add(new int[]{i, Math.abs(ref - arr[i])});
+        }
+
+        for (int i = 0; i < k; i++) {
+            System.out.println(arr[pq.poll()[0]]);
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[]{30, 40, 32, 33, 36, 37};
         findKClosestElement(arr, 38, 3);
+        findKCloset(arr, 38, 3);
 
     }
 }

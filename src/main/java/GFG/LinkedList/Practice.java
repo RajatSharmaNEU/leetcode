@@ -1,41 +1,56 @@
 package GFG.LinkedList;
 
+import java.util.LinkedList;
+
 public class Practice {
-    public static SinglyLinkedList.Node reverseKElements(SinglyLinkedList.Node head, int k) {
-        if(head == null) {
-            return null;
+    private static int capacity = 3;
+    private static LinkedList<Node> cache = new LinkedList<>();
+
+    private static class Node {
+        int key;
+        int value;
+
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
         }
+    }
 
-        SinglyLinkedList.Node prev = null, curr = head;
-        SinglyLinkedList.Node next = curr.next;
+    // put
 
-        int count = k;
+    private static void put(int key, int value) {
+        // if key exist, move it to first
+        // if capacity is full, removeLast
 
-        while (curr != null && count-- > 0) {
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-
-            if(next != null) {
-                next = next.next;
+        for (int i = 0; i < cache.size(); i++) {
+            Node curr = cache.get(i);
+            if(curr.key == key) {
+                cache.remove(i);
+                cache.addFirst(new Node(key, value));
+                return;
             }
         }
 
-        head.next = reverseKElements(curr, k);
+        if(cache.size() >= capacity) {
+            cache.removeLast();
+        }
 
-        return prev;
+        cache.addFirst(new Node(key, value));
+
     }
+    // get
+    // display
 
     public static void main(String[] args) {
-        SinglyLinkedList.Node head = new SinglyLinkedList.Node(10);
-        SinglyLinkedList.insertEnd(head, 20);
-        SinglyLinkedList.insertEnd(head, 30);
-        SinglyLinkedList.insertEnd(head, 40);
-        SinglyLinkedList.insertEnd(head, 50);
-        SinglyLinkedList.insertEnd(head, 60);
-        SinglyLinkedList.insertEnd(head, 70);
+        Practice lruCache = new Practice();
 
-        head = reverseKElements(head, 3);
-        SinglyLinkedList.traverse(head);
+        lruCache.put(1, 100);
+        lruCache.put(2, 200);
+        lruCache.put(3, 300);
+        lruCache.put(2, 300);
+
+        for (Node node : cache) {
+            System.out.print("(" + node.key + ":" + node.value + ") ");
+        }
     }
 }
