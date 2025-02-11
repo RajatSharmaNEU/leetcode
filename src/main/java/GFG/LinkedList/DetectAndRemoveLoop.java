@@ -24,8 +24,9 @@ public class DetectAndRemoveLoop {
             fast = fast.next;
         }
 
+        // TODO: if we need to retain LinkedList with same Head start
         if(fast == head) {
-            while (fast.next != head) {
+            while (fast.next != slow) {
                 fast = fast.next;
             }
         }
@@ -34,6 +35,7 @@ public class DetectAndRemoveLoop {
     }
 
     public static void main(String[] args) {
+        System.out.println("Problem 1");
         SinglyLinkedList.Node head = new SinglyLinkedList.Node(10);
         head.next = new SinglyLinkedList.Node(20);
         head.next.next = new SinglyLinkedList.Node(30);
@@ -44,6 +46,7 @@ public class DetectAndRemoveLoop {
         removeLoop(head);
         SinglyLinkedList.traverse(head);
 
+        System.out.println("Problem 2");
         SinglyLinkedList.Node head1 = new SinglyLinkedList.Node(10);
         head1.next = new SinglyLinkedList.Node(20);
         head1.next.next = new SinglyLinkedList.Node(30);

@@ -4,52 +4,44 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Practice {
-    private static class Job {
-        int deadline;
-        int profit;
+    private static class Item {
+        int weight;
+        int value;
 
-        Job(int d, int p) {
-            this.deadline = d;
-            this.profit = p;
+        Item(int w, int v) {
+            this.weight = w;
+            this.value = v;
         }
     }
 
-    private int maxProfit(Job[] jobs) {
-        Arrays.sort(jobs, new Comparator<Job>() {
-            @Override
-            public int compare(Job o1, Job o2) {
-                return o2.profit - o1.profit;
-            }
-        });
+    private static double getMaxPossibleValue(Item[] items, int weight) {
+        Arrays.sort(items, (a, b) ->  (b.value * a.weight) - (a.value * b.weight));
+        double resultValue = 0.0;
 
-        int[] jobSchedule = new int[jobs.length];
+        for (int i = 0; i < items.length; i++) {
 
-        for (int i = 0; i < jobs.length; i++) {
-            int currDeadline = jobs[i].deadline - 1;
-            while (currDeadline >= 0) {
-                if(jobSchedule[currDeadline] == 0) {
-                    jobSchedule[currDeadline] = jobs[i].profit;
-                    break;
-                }
-                currDeadline--;
+            if(items[i].weight < weight) {
+                weight = weight - items[i].weight;
+                resultValue = resultValue + items[i].value;
+            } else {
+                resultValue = resultValue +  ((weight * items[i].value) / items[i].weight);
+                break;
             }
+
         }
-        System.out.println(Arrays.toString(jobSchedule));
-        return Arrays.stream(jobSchedule).sum();
+        return resultValue;
     }
 
     public static void main(String[] args) {
-        Job[] jobs = new Job[]{
-                new Job(4, 50),
-                new Job(1, 5),
-                new Job(1, 20),
-                new Job(5, 10),
-                new Job(5, 80),
+        Item[] items = new Item[] {
+                new Item(10, 60), // 6
+                new Item(40, 40), // 1
+                new Item(20, 100), // 5
+                new Item(30, 120), // 4
         };
 
-        Practice jobSequencing = new Practice();
-        System.out.println(jobSequencing.maxProfit(jobs));
-        // [0, 0, 0, 0, 0]
-        // [20, 0, 10, 50, 80] ~ 160
+        System.out.println(getMaxPossibleValue(items, 50));
+        // 10 + 20 + (20/30)
+        // 60 + 100 + (120 * 20/30) = 240
     }
 }

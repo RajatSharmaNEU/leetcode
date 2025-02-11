@@ -54,6 +54,6 @@ public class PreviousGreatestElement {
         PreviousGreatestElement previousGreatestElement = new PreviousGreatestElement();
         previousGreatestElement.printPreviousGreatest(arr);
         System.out.println("-----");
-        previousGreatestElement.printPreviousGreatestStack(arr);
+        previousGreatestElement.printPreviousGreatestUsingStack(arr);
     }
 }

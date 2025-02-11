@@ -1,60 +1,36 @@
 package GFG.Backtracking.Neetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+// O(n!) time complexity
 public class Permutation {
-    public static List<List<Integer>> findPermutation(int[] nums) {
-        if(nums.length == 0){
-            return Arrays.asList(new ArrayList<>());
-        }
-
-        List<List<Integer>> perms = findPermutation(Arrays.copyOfRange(nums, 1, nums.length));
+    public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        for(List<Integer> perm: perms) {
-            for (int i = 0; i <= perm.size(); i++) {
-                List<Integer> permCopy = new ArrayList<>(perm);
-                permCopy.add(i, nums[0]);
-                result.add(permCopy);
-            }
-        }
+        DFS(nums, new ArrayList<>(), result);
         return result;
     }
 
-    static List<List<Integer>> res;
-
-    public static List<List<Integer>> permute(int[] nums) {
-        res = new ArrayList<>();
-        DFS(new ArrayList<>(), nums, new boolean[nums.length]);
-        return res;
-    }
-
-    public static void DFS(List<Integer> perm, int[] nums, boolean[] pick) {
-        if(perm.size() == nums.length) {
-            res.add(new ArrayList<>(perm));
+    public void DFS(int[] nums, List<Integer> curr, List<List<Integer>> result) {
+        if(curr.size() == nums.length) {
+            result.add(new ArrayList<>(curr));
             return;
         }
 
-        for (int i = 0; i < nums.length; i++) {
-            if(!pick[i]) {
-                // Left
-                perm.add(nums[i]);
-                pick[i] = true;
+        for(int i = 0; i < nums.length; i++) {
+            // avoid repeating
+            if(curr.contains(nums[i])) continue;
 
-                // continue
-                DFS(perm, nums, pick);
-
-                // Right
-                perm.remove(perm.size() - 1);
-                pick[i] = false;
-            }
+            curr.add(nums[i]);
+            DFS(nums, curr, result);
+            curr.remove(curr.size() - 1);
         }
     }
+
     public static void main(String[] args) {
         int[] arr = new int[]{1, 2, 3};
-//        List<List<Integer>> result = findPermutation(arr);
-        List<List<Integer>> result = permute(arr);
+        Permutation permutation = new Permutation();
+        List<List<Integer>> result = permutation.permute(arr);
         System.out.println(result);
     }
 }

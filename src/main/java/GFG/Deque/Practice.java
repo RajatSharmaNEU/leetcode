@@ -5,24 +5,19 @@ import java.util.Arrays;
 public class Practice {
     public static int findStartingPump(int[] petrol, int[] dist) {
         int totalGas = 0;
-        int stationsVisited = 0;
         int result = 0;
-        int index = 0;
 
         if(Arrays.stream(petrol).sum() - Arrays.stream(dist).sum() < 0 ) {
             return -1;
         }
-        while (stationsVisited < petrol.length) {
-            totalGas = totalGas + (petrol[index] - dist[index]);
+
+        for (int i = 0; i < petrol.length; i++) {
+            totalGas = totalGas + (petrol[i] - dist[i]);
             if(totalGas < 0) {
                 totalGas = 0;
-                stationsVisited = 0;
-                result = index + 1;
+                result = i + 1;
             }
-            index = (index + 1) % petrol.length;
-            stationsVisited++;
         }
-
         return result + 1;
     }
 

@@ -1,42 +1,29 @@
 package GFG.DP.LIS;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class LongestIncreasingSubsequence {
-    // Optimized
-    int ceilIndex(int[] arr, int l, int r, int x) {
-        while (r > l) {
-            int m = l + (r - l) / 2;
-            if (arr[m] >= x) {
-                r = m;
+    public int countLISBinary(int[] nums) {
+        List<Integer> temp = new ArrayList<>();
+        temp.add(nums[0]);
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > temp.get(temp.size() - 1)) {
+                temp.add(nums[i]);
             } else {
-                l = m + 1;
+                int idx = Collections.binarySearch(temp, nums[i]);
+                System.out.println(idx);
+                if (idx < 0) idx = -idx - 1; // Get insertion point
+                temp.set(idx, nums[i]);
+                System.out.println(Arrays.toString(temp.toArray()));
             }
         }
-
-        return r;
+        return temp.size();
     }
 
-    // O(nlogn) - LIS
-    // here we try to maintain order of sequence
-    // the sequence is not the right but length would be
-    private int countLISBinary(int[] arr) {
-        int dp[] = new int[arr.length];
-        int len = 1;
-
-        dp[0] = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > dp[len - 1]) {
-                dp[len] = arr[i];
-                len++;
-            } else {
-                int ceil = ceilIndex(dp, 0, len - 1, arr[i]);
-                dp[ceil] = arr[i];
-            }
-        }
-
-        return len;
-    }
 
     // O(n^2) - LIS
     private int countLISNaive(int[] arr) {
@@ -58,11 +45,11 @@ public class LongestIncreasingSubsequence {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{3, 4, 2, 8, 10};
+        int[] arr = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
 
 
         LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
-        System.out.println(lis.countLISNaive(arr));
-//        System.out.println(lis.countLISBinary(arr));
+//        System.out.println(lis.countLISNaive(arr));
+        System.out.println(lis.countLISBinary(arr));
     }
 }

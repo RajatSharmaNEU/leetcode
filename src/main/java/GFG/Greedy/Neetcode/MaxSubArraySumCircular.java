@@ -1,0 +1,39 @@
+package GFG.Greedy.Neetcode;
+
+public class MaxSubArraySumCircular {
+    public static int maxSubarraySumCircular(int[] nums) {
+        // Kadane Algo
+        int maxSum = Integer.MIN_VALUE;
+        int minSum = Integer.MAX_VALUE;
+
+        int currMaxSum = 0;
+        int currMinSum = 0;
+
+        int totalSum = 0;
+
+        for(int num: nums) {
+            // Max sum of Sub Array
+            currMaxSum = Math.max(num, currMaxSum + num);
+            maxSum = Math.max(currMaxSum, maxSum);
+
+            // Min sum of Sub Array
+            currMinSum = Math.min(num, currMinSum + num);
+            minSum = Math.min(currMinSum, minSum);
+
+            totalSum = totalSum + num;
+        }
+
+        // If all values are negative
+        if(maxSum < 0) {
+            return maxSum;
+        }
+
+        // return max of non circular and circular
+        return Math.max(maxSum, totalSum - minSum);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {3,-1,2,-1};
+        System.out.println(maxSubarraySumCircular(arr));
+    }
+}

@@ -18,7 +18,7 @@ public class DequeUsingArray {
 
     // Methods
     // get rear
-    private int getRear(int front) {
+    private int getRear() {
         if (isEmpty()) return -1;
         return (front + size - 1) % cap;
     }
@@ -44,7 +44,7 @@ public class DequeUsingArray {
         if (isFull()) return;
         // Rear moves right hence increase by 1
         // Do % cap as it is circular
-        int rear = (getRear(front) + 1) % cap;
+        int rear = (getRear() + 1) % cap;
         arr[rear] = x;
         size++;
     }

@@ -1,70 +1,35 @@
 package GFG.Backtracking;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Practice {
-    public static void printBoard(char[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            System.out.println(Arrays.toString(board[i]));
-        }
+    static List<List<Integer>> res = new ArrayList<>();
+
+    public static List<List<Integer>> getCombination(int[] candidates, int target) {
+        helper(0, new ArrayList<>(), candidates, target);
+        return res;
     }
 
-    public static void placeNQueen(int N){
-        char[][] board = new char[N][N];
-
-        for (int i = 0; i < board.length; i++) {
-            Arrays.fill(board[i], 'X');
+    public static void helper(int index, List<Integer> currList, int[] candidates, int target) {
+        if(target == 0) {
+            res.add(currList);
+            return;
         }
 
-        if(solveRecursive(0, N, board)){
-            printBoard(board);
-        }
-    }
-
-    public static boolean solveRecursive(int col, int N, char[][] board) {
-        if(col == N) {
-            return true;
+        if(target < 0 || index == candidates.length) {
+            return;
         }
 
-        for (int r = 0; r < N; r++) {
-            if(isSafe(r, col, N, board)) {
-                board[r][col] = 'Q';
-                if(solveRecursive(col+1, N, board)) {
-                    return true;
-                }
-                board[r][col] = 'X';
-            }
+        currList.add(candidates[index]);
+        helper(index, currList, candidates, target - candidates[index]);
 
-        }
-
-        return false;
-    }
-
-    public static boolean isSafe(int currentRow, int currentCol, int N, char[][] board) {
-        // check if same row has Queen
-        for (int i = 0; i < N; i++) {
-            if (board[currentRow][i] == 'Q') {
-                return false;
-            }
-        }
-
-        // check if diagonally upper side has Queen
-        for (int i = currentRow, j = currentCol; i>=0 && j>=0; i--, j--) {
-            if (board[currentRow][i] == 'Q') {
-                return false;
-            }
-        }
-        // check if diagonally lower side has Queen
-        for (int i = currentRow, j = currentCol; i<N && j>=0; i++, j--) {
-            if (board[currentRow][i] == 'Q') {
-                return false;
-            }
-        }
-
-        return true;
+        currList.remove(currList.size() - 1);
+        helper(index + 1, currList, candidates, target);
     }
 
     public static void main(String[] args) {
-        placeNQueen(4);
+        int[] candidates = new int[]{2, 3, 6, 7};
+        int target = 7;
     }
 }

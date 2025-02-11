@@ -1,26 +1,25 @@
 package GFG.DP;
 
+import java.util.Arrays;
+
 public class Practice {
-    public static int knapsack(int[] weights, int[] values, int weightLimit, int endIndex) {
-        if(endIndex<0 || weightLimit <= 0) {
-            return 0;
-        }
+    public static int LIS(int[] arr) {
+        int[] dp = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            dp[i] = 1;
 
-        if(weights[endIndex] > weightLimit) {
-            return knapsack(weights, values, weightLimit, endIndex - 1);
+            for (int j = 0; j < i; j++) {
+                if(arr[j] > arr[i]) {
+                    dp[i] = Math.max(dp[i], 1 + dp[j]);
+                }
+            }
         }
-
-        return Math.max(
-                knapsack(weights, values, weightLimit, endIndex - 1),
-                values[endIndex] + knapsack(weights, values, weightLimit - weights[endIndex], endIndex - 1)
-        );
+        System.out.println(Arrays.toString(dp));
+        return Arrays.stream(dp).max().orElse(-1);
     }
-    public static void main(String[] args) {
-        int[] values = new int[]{10, 40, 30, 50};
-        int[] weights = new int[]{5, 4, 6, 3};
-        int weightLimit = 10;
 
-        System.out.println(knapsack(weights, values, weightLimit, values.length-1));
-        System.out.println(knapsack(weights, values, weightLimit, values.length));
+    public static void main(String[] args) {
+        int[] arr = new int[]{3, 4, 2, 8, 10};
+        System.out.println(LIS(arr));
     }
 }
