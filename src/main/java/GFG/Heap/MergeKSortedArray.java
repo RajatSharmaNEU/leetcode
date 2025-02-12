@@ -15,13 +15,9 @@ public class MergeKSortedArray {
         }
     }
 
+    // Time Complexity O(n log n)
     public static List<Integer> mergeArray(ArrayList<ArrayList<Integer>> sortedArrayList) {
-        PriorityQueue<Triplet> pq = new PriorityQueue<>(new Comparator<Triplet>() {
-            @Override
-            public int compare(Triplet o1, Triplet o2) {
-                return o1.value - o2.value ;
-            }
-        });
+        PriorityQueue<Triplet> pq = new PriorityQueue<>((a, b) -> a.value - b.value);
         int arrayCount = sortedArrayList.size();
 
         // first add zero index elements in pq
@@ -40,9 +36,9 @@ public class MergeKSortedArray {
 
             if(currPosition + 1 < sortedArrayList.get(currArrayNumber).size()) {
                 Triplet newElement = new Triplet(
-                        sortedArrayList.get(currArrayNumber).get(currPosition + 1),
-                        currArrayNumber,
-                        currArrayNumber + 1);
+                        sortedArrayList.get(currArrayNumber).get(currPosition + 1), // value
+                        currArrayNumber, // array number
+                        currPosition + 1); // position in array
                 pq.add(newElement);
             }
         }
