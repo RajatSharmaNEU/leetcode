@@ -21,6 +21,7 @@ public class FindExcelColumnName {
 
         System.out.println(num_hash(1));
         System.out.println(num_hash(26));
+        System.out.println(num_hash(27));
         System.out.println(num_hash(52));
         System.out.println(num_hash(80));
         System.out.println(num_hash(676));

@@ -2,6 +2,7 @@ package GFG.Searching.Sorted;
 
 import java.util.Arrays;
 
+//https://leetcode.com/problems/koko-eating-bananas/description/
 public class EatingBanana {
     public static int minEatingSpeedNaive(int[] piles, int h) {
         int maxSpeed = Arrays.stream(piles).max().getAsInt();

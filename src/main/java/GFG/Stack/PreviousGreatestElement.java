@@ -19,6 +19,7 @@ public class PreviousGreatestElement {
         }
     }
 
+    // int[] arr = new int[]{15, 10, 18, 12, 4, 6, 2, 8};
     private void printPreviousGreatestUsingStack(int[] arr) {
         Stack<Integer> stack = new Stack<>();
         int[] result = new int[arr.length];

@@ -5,20 +5,19 @@ public class DecodeWay {
         int n = s.length();
 
         int[] dp = new int[n + 1];
-
         dp[0] = 1;
         dp[1] = s.charAt(0) == '0' ? 0 : 1;
 
-        // length = 1 => 1
-        // length = 2 => ? two steps back 1 or 2
+        for (int i = 2; i <= n; i++) {
+            char curr = s.charAt(i - 1);
+            char prev = s.charAt(i - 2);
 
-        for(int i = 2; i < n + 1; i++) {
-            if(s.charAt(i-1) != '0') {
-                dp[i] = dp[i] + dp[i-1];
+            if (curr != '0') {
+                dp[i] = dp[i - 1];
             }
 
-            if(s.charAt(i-2) == '1' || (s.charAt(i-2) == '2' && s.charAt(i-1) <= '6')) {
-                dp[i] = dp[i] + dp[i-2];
+            if (prev == '1' || (prev == '2' && curr < '7')) {
+                dp[i] = dp[i] + dp[i - 2];
             }
         }
 

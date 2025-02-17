@@ -12,17 +12,17 @@ public class Trie {
     private TrieNode root = new TrieNode();
 
     private void insert(String key) {
-        TrieNode pCrawl = root;
+        TrieNode curr = root;
 
         for (int i = 0; i < key.length(); i++) {
             int index = key.charAt(i) - 'a';
-            if (pCrawl.children[index] == null) {
-                pCrawl.children[index] = new TrieNode();
+            if (curr.children[index] == null) {
+                curr.children[index] = new TrieNode();
             }
-            pCrawl = pCrawl.children[index];
+            curr = curr.children[index];
         }
 
-        pCrawl.isEndOfWord = true;
+        curr.isEndOfWord = true;
     }
 
     private boolean search(String key) {

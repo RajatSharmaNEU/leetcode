@@ -25,9 +25,9 @@ public class LongestSumSubArray {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = new int[]{5, 8, -4, -4, 9, -2, 2};
-        int[] arr2 = new int[]{3, 1, 0, 1, 8, 2, 3, 6};
-        int[] arr3 = new int[]{8, 3, 7};
+        int[] arr1 = new int[]{5, 8, -4, -4, 9, -2, 2}; // 5, 13, 9, 5,
+        int[] arr2 = new int[]{3, 1, 0, 1, 8, 2, 3, 6}; // 3, 4, 4, 5, 13, 15, 18, 24
+        int[] arr3 = new int[]{8, 3, 7}; // 8, 11, 18
 
         System.out.println(findLongestSumSubArray(arr1, 0));
         System.out.println(findLongestSumSubArray(arr2, 5));
